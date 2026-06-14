@@ -151,7 +151,8 @@ const facebookUrl = "https://www.facebook.com/share/1Ew67obhv6/?mibextid=wwXIfr"
           alt="A family of four laughing together on the grass in front of a weathered red barn"
           class="absolute inset-0 h-full w-full object-cover"
         />
-        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent md:bg-gradient-to-r md:from-black/70 md:via-black/20"></div>
+        <div aria-hidden="true" class="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-black/50 to-transparent"></div>
         <div class="absolute inset-x-0 bottom-0 px-5 pb-14 md:px-10 md:pb-20">
           <h1 class="max-w-4xl text-balance font-serif text-4xl leading-[1.05] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.6)] sm:text-5xl md:text-6xl lg:text-7xl">
             Capturing candid &amp; heartfelt moments throughout the White Mountains of New Hampshire.
@@ -204,9 +205,13 @@ const facebookUrl = "https://www.facebook.com/share/1Ew67obhv6/?mibextid=wwXIfr"
             loading="lazy"
             class="h-[55vh] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:h-[70vh]"
           />
-          <figcaption class="absolute inset-0 flex items-end bg-black/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100 md:p-7">
-            <span class="font-serif text-xl text-white md:text-2xl lg:text-3xl">{feature.name}</span>
+          <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent"></div>
+          <figcaption class="absolute bottom-0 left-0 p-5 transition-opacity duration-300 group-hover:opacity-0 md:p-7">
+            <span class="font-serif text-xl text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.5)] md:text-2xl lg:text-3xl">{feature.name}</span>
           </figcaption>
+          <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center bg-black/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+            <span class="font-serif text-2xl text-white md:text-3xl lg:text-4xl">{feature.name}</span>
+          </div>
         </figure>
 
         <!-- Gap-free asymmetric masonry -->
@@ -219,9 +224,13 @@ const facebookUrl = "https://www.facebook.com/share/1Ew67obhv6/?mibextid=wwXIfr"
                 loading="lazy"
                 class="block w-full transition-transform duration-700 ease-out group-hover:scale-105"
               />
-              <figcaption class="absolute inset-0 flex items-end bg-black/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100 md:p-7">
-                <span class="font-serif text-xl text-white md:text-2xl lg:text-3xl">{tile.name}</span>
+              <div aria-hidden="true" class="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/70 to-transparent"></div>
+              <figcaption class="absolute bottom-0 left-0 p-5 transition-opacity duration-300 group-hover:opacity-0 md:p-7">
+                <span class="font-serif text-xl text-white [text-shadow:0_1px_6px_rgba(0,0,0,0.5)] md:text-2xl lg:text-3xl">{tile.name}</span>
               </figcaption>
+              <div aria-hidden="true" class="absolute inset-0 flex items-center justify-center bg-black/45 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span class="font-serif text-2xl text-white md:text-3xl lg:text-4xl">{tile.name}</span>
+              </div>
             </figure>
           ))}
         </div>
@@ -335,7 +344,7 @@ const facebookUrl = "https://www.facebook.com/share/1Ew67obhv6/?mibextid=wwXIfr"
           <img
             src="/logo-white.png"
             alt="Meredith Lewis Photography logo — a hand-drawn White Mountains crest"
-            class="h-20 w-auto sm:h-24"
+            class="h-32 w-auto sm:h-36"
           />
           <nav aria-label="Footer">
             <ul class="flex flex-wrap gap-x-8 gap-y-3">
