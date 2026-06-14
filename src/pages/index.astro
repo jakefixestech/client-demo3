@@ -1,17 +1,417 @@
 ---
+import "../styles/global.css";
 
+const navLinks = [
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Portfolio", href: "#portfolio" },
+  { label: "Services", href: "#services" },
+  { label: "Testimonials", href: "#testimonials" },
+  { label: "Contact", href: "#contact" },
+];
+
+// Events is the full-bleed feature tile; the rest flow into a gap-free masonry.
+const feature = {
+  name: "Events & Parties",
+  src: "/events.jpg",
+  alt: "Events and parties photography by Meredith Lewis",
+};
+
+const tiles = [
+  { name: "Senior Portraits", src: "/senior.jpg", alt: "Senior portrait photography by Meredith Lewis" },
+  { name: "Couples", src: "/couples.png", alt: "Couples photography by Meredith Lewis" },
+  { name: "Engagement", src: "/engagement.jpg", alt: "Engagement photography by Meredith Lewis" },
+  { name: "Family", src: "/family.jpg", alt: "Family photography by Meredith Lewis" },
+  { name: "Maternity", src: "/maternity.jpg", alt: "Maternity photography by Meredith Lewis" },
+  { name: "Pet Photography", src: "/pet.jpg", alt: "Pet photography by Meredith Lewis" },
+];
+
+const services = [
+  { name: "Senior Sessions", price: "$225" },
+  { name: "Couples", price: "$225" },
+  { name: "Engagement", price: "$225" },
+  { name: "Family", price: "$250" },
+  { name: "Maternity", price: "$225" },
+  { name: "Pet Photography", price: "$225" },
+  { name: "Events", price: "$300" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "110% recommend! Meredith went above and beyond to make sure we were comfortable with all poses. She was fun, energetic and anyone that can make my fianc\u00e9 laugh and naturally smile in photos gets my stamp of approval.",
+    author: "Alyssa S.",
+  },
+  {
+    quote:
+      "She was able to get my son to relax and take great senior photos \u2014 so many great pictures! She captured the moment beautifully during an emotional time. I would whole heartedly recommend her for any task. Great job, great photographer, great person!",
+    author: "Susan G.",
+  },
+];
+
+const facebookUrl = "https://www.facebook.com/share/1Ew67obhv6/?mibextid=wwXIfr";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Client Demo3</title>
-	</head>
-	<body>
-		<h1>Client Demo3</h1>
-	</body>
+<!doctype html>
+<html lang="en" class="bg-white">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meredith Lewis Photography — White Mountains, New Hampshire</title>
+    <meta
+      name="description"
+      content="A New Hampshire based photography business rooted in the White Mountains, capturing candid, heartfelt moments — senior portraits, couples, engagement, family, maternity, pets, and events. Serving Maine, New Hampshire & Vermont."
+    />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --font-serif: "Playfair Display", Georgia, serif;
+        --font-sans: "Inter", system-ui, sans-serif;
+      }
+      .font-serif { font-family: var(--font-serif); }
+      body { font-family: var(--font-sans); }
+      html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    </style>
+  </head>
+  <body class="bg-white text-neutral-900 antialiased">
+    <!-- ===================== NAV ===================== -->
+    <header
+      id="site-header"
+      class="fixed inset-x-0 top-0 z-50 bg-transparent text-white transition-colors duration-300"
+    >
+      <nav
+        class="mx-auto flex max-w-[1600px] items-center justify-between px-5 py-4 md:px-10"
+        aria-label="Primary"
+      >
+        <a href="#home" class="font-serif text-base tracking-tight md:text-lg">
+          Meredith Lewis Photography
+        </a>
+
+        <!-- Desktop links -->
+        <ul class="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class="text-xs uppercase tracking-[0.18em] opacity-90 transition-opacity hover:opacity-100"
+              >
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+
+        <!-- Mobile toggle -->
+        <button
+          id="menu-toggle"
+          type="button"
+          class="md:hidden"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open menu"
+        >
+          <svg id="icon-open" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </nav>
+
+      <!-- Mobile menu -->
+      <div id="mobile-menu" class="hidden border-t border-neutral-200 bg-white text-neutral-900 md:hidden">
+        <ul class="flex flex-col px-5 py-2">
+          {navLinks.map((link) => (
+            <li>
+              <a href={link.href} class="block py-3 text-sm uppercase tracking-[0.18em]">
+                {link.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===================== HERO ===================== -->
+      <section id="home" class="relative h-screen w-full overflow-hidden">
+        <img
+          src="/hero.jpg"
+          alt="A family of four laughing together on the grass in front of a weathered red barn"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-r from-black/70 via-black/20 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 px-5 pb-14 md:px-10 md:pb-20">
+          <h1 class="max-w-4xl text-balance font-serif text-4xl leading-[1.05] text-white [text-shadow:0_2px_12px_rgba(0,0,0,0.6)] sm:text-5xl md:text-6xl lg:text-7xl">
+            Capturing candid &amp; heartfelt moments throughout the White Mountains of New Hampshire.
+          </h1>
+          <p class="mt-6 text-xs uppercase tracking-[0.22em] text-white/80">
+            Meredith Lewis Photography — Est. 2019
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== ABOUT ===================== -->
+      <section id="about" class="grid grid-cols-1 bg-white md:grid-cols-12">
+        <div class="md:col-span-5">
+          <img
+            src="/about.jpg"
+            alt="Meredith Lewis outdoors holding her camera"
+            class="h-72 w-full object-cover sm:h-96 md:h-full"
+          />
+        </div>
+        <div class="flex flex-col justify-center px-5 py-16 md:col-span-7 md:px-16 md:py-28 lg:px-24">
+          <p class="text-xs uppercase tracking-[0.22em] text-neutral-500">About</p>
+          <h2 class="mt-6 max-w-xl text-pretty font-serif text-3xl leading-tight text-neutral-900 md:text-4xl lg:text-5xl">
+            A New Hampshire photographer rooted in the White Mountains.
+          </h2>
+          <div class="mt-8 max-w-xl text-neutral-600">
+            <p class="text-base leading-relaxed md:text-lg">
+              Meredith Lewis Photography is a New Hampshire based photography business rooted in the
+              picturesque White Mountains, capturing candid, meaningful moments that feel genuine and
+              true to each client.
+            </p>
+            <p class="mt-6 text-base leading-relaxed md:text-lg">
+              Meredith believes everyone should have the luxury to have their photos taken — no matter
+              their financial situation. Each season she offers a limited number of &ldquo;Pay What You
+              Can&rdquo; mini sessions.
+            </p>
+          </div>
+          <p class="mt-10 text-xs uppercase tracking-[0.22em] text-neutral-500">
+            Based in Dalton, NH · Serving ME, NH &amp; VT
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== PORTFOLIO ===================== -->
+      <section id="portfolio" aria-label="Portfolio">
+        <!-- Full-bleed feature tile -->
+        <figure class="group relative block overflow-hidden bg-neutral-900">
+          <img
+            src={feature.src}
+            alt={feature.alt}
+            loading="lazy"
+            class="h-[55vh] w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 md:h-[70vh]"
+          />
+          <figcaption class="absolute inset-0 flex items-end bg-black/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100 md:p-7">
+            <span class="font-serif text-xl text-white md:text-2xl lg:text-3xl">{feature.name}</span>
+          </figcaption>
+        </figure>
+
+        <!-- Gap-free asymmetric masonry -->
+        <div class="columns-1 gap-0 sm:columns-2 lg:columns-3">
+          {tiles.map((tile) => (
+            <figure class="group relative block overflow-hidden bg-neutral-900 [break-inside:avoid]">
+              <img
+                src={tile.src}
+                alt={tile.alt}
+                loading="lazy"
+                class="block w-full transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <figcaption class="absolute inset-0 flex items-end bg-black/0 p-5 opacity-0 transition-all duration-300 group-hover:bg-black/40 group-hover:opacity-100 md:p-7">
+                <span class="font-serif text-xl text-white md:text-2xl lg:text-3xl">{tile.name}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+      </section>
+
+      <!-- ===================== SERVICES ===================== -->
+      <section id="services" class="bg-white px-5 py-24 md:px-10 md:py-36">
+        <div class="mx-auto max-w-5xl">
+          <div class="max-w-2xl">
+            <p class="text-xs uppercase tracking-[0.22em] text-neutral-500">Services &amp; Pricing</p>
+            <h2 class="mt-6 text-balance font-serif text-3xl leading-tight text-neutral-900 md:text-5xl">
+              Sessions for every season of life.
+            </h2>
+          </div>
+
+          <ul class="mt-16 divide-y divide-neutral-200 border-y border-neutral-200">
+            {services.map((service) => (
+              <li class="flex items-baseline justify-between gap-4 py-6">
+                <span class="font-serif text-xl text-neutral-900 md:text-2xl">{service.name}</span>
+                <span aria-hidden="true" class="mx-4 hidden flex-1 border-b border-dotted border-neutral-300 sm:block"></span>
+                <span class="text-base tabular-nums text-neutral-600 md:text-lg">{service.price}</span>
+              </li>
+            ))}
+          </ul>
+
+          <p class="mt-10 max-w-2xl text-sm leading-relaxed text-neutral-500">
+            Add-ons and seasonal mini sessions are available. Reach out for current availability and
+            custom packages.
+          </p>
+        </div>
+      </section>
+
+      <!-- ===================== PAY WHAT YOU CAN ===================== -->
+      <section class="bg-neutral-950 px-5 py-28 text-white md:px-10 md:py-40">
+        <div class="mx-auto max-w-4xl">
+          <p class="text-xs uppercase tracking-[0.22em] text-white/50">Pay What You Can</p>
+          <h2 class="mt-8 text-balance font-serif text-3xl leading-[1.1] md:text-5xl lg:text-6xl">
+            Everyone deserves to have their moments captured — no matter their budget.
+          </h2>
+          <p class="mt-8 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
+            Each season, Meredith offers a limited number of &ldquo;Pay What You Can&rdquo; mini
+            sessions, so the luxury of beautiful photographs is never out of reach.
+          </p>
+          <a
+            href="mailto:meredith.lewis2018@gmail.com?subject=Pay%20What%20You%20Can%20Mini%20Sessions"
+            class="mt-12 inline-block border border-white px-8 py-4 text-xs uppercase tracking-[0.22em] text-white transition-colors hover:bg-white hover:text-neutral-950"
+          >
+            Ask About Mini Sessions
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================== TESTIMONIALS ===================== -->
+      <section id="testimonials" class="bg-white px-5 py-24 md:px-10 md:py-40">
+        <div class="mx-auto max-w-5xl">
+          <p class="text-xs uppercase tracking-[0.22em] text-neutral-500">Kind Words</p>
+          <div class="mt-16 flex flex-col gap-20 md:gap-28">
+            {testimonials.map((item, i) => (
+              <blockquote class={i % 2 === 1 ? "md:ml-auto md:text-right" : ""}>
+                <p class="max-w-3xl text-balance font-serif text-2xl leading-snug text-neutral-900 md:text-3xl lg:text-4xl">
+                  &ldquo;{item.quote}&rdquo;
+                </p>
+                <footer class="mt-8 text-xs uppercase tracking-[0.22em] text-neutral-500">
+                  — {item.author}
+                </footer>
+              </blockquote>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== CONTACT ===================== -->
+      <section id="contact" class="relative flex min-h-[80vh] w-full items-center overflow-hidden">
+        <img
+          src="/contact.jpg"
+          alt="A scenic landscape in the White Mountains of New Hampshire"
+          class="absolute inset-0 h-full w-full object-cover"
+        />
+        <div aria-hidden="true" class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/30 to-black/40"></div>
+        <div class="relative w-full px-5 py-24 md:px-10">
+          <div class="mx-auto max-w-4xl">
+            <h2 class="text-balance font-serif text-4xl leading-[1.05] text-white md:text-6xl lg:text-7xl">
+              Let&apos;s tell your story.
+            </h2>
+            <div class="mt-10 flex flex-col gap-2 text-white/90">
+              <a href="mailto:meredith.lewis2018@gmail.com" class="text-lg transition-opacity hover:opacity-70 md:text-xl">
+                meredith.lewis2018@gmail.com
+              </a>
+              <a href="tel:+16035035811" class="text-lg transition-opacity hover:opacity-70 md:text-xl">
+                (603) 503-5811
+              </a>
+              <a href={facebookUrl} target="_blank" rel="noopener noreferrer" class="text-lg transition-opacity hover:opacity-70 md:text-xl">
+                Facebook
+              </a>
+            </div>
+            <a
+              href="mailto:meredith.lewis2018@gmail.com"
+              class="mt-12 inline-block bg-white px-8 py-4 text-xs uppercase tracking-[0.22em] text-neutral-950 transition-colors hover:bg-neutral-200"
+            >
+              Get In Touch
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="bg-neutral-950 px-5 py-16 text-white md:px-10">
+      <div class="mx-auto max-w-[1600px]">
+        <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+          <img
+            src="/logo-white.png"
+            alt="Meredith Lewis Photography logo — a hand-drawn White Mountains crest"
+            class="h-20 w-auto sm:h-24"
+          />
+          <nav aria-label="Footer">
+            <ul class="flex flex-wrap gap-x-8 gap-y-3">
+              {navLinks.map((link) => (
+                <li>
+                  <a href={link.href} class="text-xs uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+              <li>
+                <a href={facebookUrl} target="_blank" rel="noopener noreferrer" class="text-xs uppercase tracking-[0.18em] text-white/70 transition-colors hover:text-white">
+                  Facebook
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <div class="mt-12 flex flex-col gap-3 border-t border-white/10 pt-8 text-xs text-white/50 sm:flex-row sm:items-center sm:justify-between">
+          <p>Based in the White Mountains — serving Maine, New Hampshire &amp; Vermont.</p>
+          <p>&copy; {new Date().getFullYear()} Meredith Lewis Photography. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================== VANILLA JS ===================== -->
+    <script>
+      const header = document.getElementById("site-header");
+      const toggle = document.getElementById("menu-toggle");
+      const menu = document.getElementById("mobile-menu");
+      const iconOpen = document.getElementById("icon-open");
+      const iconClose = document.getElementById("icon-close");
+
+      if (header && toggle && menu && iconOpen && iconClose) {
+        const solidClasses = ["bg-white", "text-neutral-900", "border-b", "border-neutral-200"];
+        const transparentClasses = ["bg-transparent", "text-white"];
+
+        const setSolid = (on: boolean) => {
+          if (on) {
+            header.classList.remove(...transparentClasses);
+            header.classList.add(...solidClasses);
+          } else {
+            header.classList.remove(...solidClasses);
+            header.classList.add(...transparentClasses);
+          }
+        };
+
+        let menuOpen = false;
+        const syncHeader = () => setSolid(window.scrollY > 24 || menuOpen);
+
+        window.addEventListener("scroll", syncHeader, { passive: true });
+        syncHeader();
+
+        toggle.addEventListener("click", () => {
+          menuOpen = !menuOpen;
+          menu.classList.toggle("hidden", !menuOpen);
+          iconOpen.classList.toggle("hidden", menuOpen);
+          iconClose.classList.toggle("hidden", !menuOpen);
+          toggle.setAttribute("aria-expanded", String(menuOpen));
+          toggle.setAttribute("aria-label", menuOpen ? "Close menu" : "Open menu");
+          syncHeader();
+        });
+
+        menu.querySelectorAll("a").forEach((link) => {
+          link.addEventListener("click", () => {
+            menuOpen = false;
+            menu.classList.add("hidden");
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+            toggle.setAttribute("aria-expanded", "false");
+            toggle.setAttribute("aria-label", "Open menu");
+            syncHeader();
+          });
+        });
+      }
+    </script>
+  </body>
 </html>
